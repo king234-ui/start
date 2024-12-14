@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Preloader</title>
+  <style>
+    /* Preloader Styles */
+    #preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #f5f5f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      overflow: hidden;
+    }
+
+    .spinner {
+      width: 80px;
+      height: 80px;
+      border: 10px solid #ccc;
+      border-top: 10px solid #3498db;
+      border-radius: 50%;
+      animation: spin 1.5s linear infinite;
+    }
+
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Page Content */
+    body.loaded #preloader {
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+
+    .content {
+      display: none;
+    }
+
+    body.loaded .content {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="spinner"></div>
+  </div>
+
+
+
+  <!-- Page Content -->
+  <div class="content">
+    <h1>Welcome to the Advanced Preloader Example!</h1>
+    <p>Your content will appear here after the preloader disappears.</p>
+  </div>
+
+  <script>
+
+
+    // JavaScript for Preloader
+
+    
+    window.addEventListener('load', function () {
+      // Simulate content loading time (optional)
+      setTimeout(() => {
+        document.body.classList.add('loaded');
+      }, 3000); // Adjust the time as needed
+    });
+
+
+  </script>
+</body>
+</html>
+

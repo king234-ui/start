@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Split Text Animation</title>
+    <style>
+        .text-container {
+            font-size: 2rem;
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        .text-container span {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .text-container span.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="text-container" id="textContainer">Split Text Animation</div>
+
+    <script>
+        const textContainer = document.getElementById('textContainer');
+        const text = textContainer.textContent;
+        textContainer.textContent = '';
+
+        // Split text into individual characters and wrap in spans
+        text.split('').forEach((char, index) => {
+            const span = document.createElement('span');
+            span.textContent = char;
+            textContainer.appendChild(span);
+
+            // Add animation delay for each character
+            setTimeout(() => {
+                span.classList.add('visible');
+            }, index * 100); // Adjust delay for animation
+        });
+    </script>
+</body>
+
+</html>
+
+
